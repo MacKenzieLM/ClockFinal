@@ -16,20 +16,22 @@ import javax.swing.JPanel;
  */
 public abstract class AlarmTrigger extends JFrame implements ActionListener{
 
-     // create a new panel with following variables
+   // create a new panel with following variables
     JPanel panel = new JPanel();
     JLabel alarmOutput;
     JButton closeButton = new JButton("Close this window");
+    private String alarmName;
+    private String alarmTime;
     
-     /*
+    /*
     * Constructor for outputting the alarm name and alarm time 
     */
     public AlarmTrigger(String alarmName, String alarmTime){
        
-        // output the alarm name and time
-      // String output = alarmName + " " + alarmTime;
-        JOptionPane.showMessageDialog(panel, alarmOutput);
-    
+       // output the alarm name and time 
+     //  String output = alarmName + " " + alarmTime;
+     //  JOptionPane.showMessageDialog(panel, alarmOutput);
+       JOptionPane.showMessageDialog(panel, alarmName + " " + alarmTime);
     
    
     
