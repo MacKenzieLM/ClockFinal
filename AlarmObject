@@ -1,7 +1,8 @@
 import java.time.LocalDateTime;
 
-**
- * This is my alarm object class featuring alarm hour and minute
+/**
+ * This is my class of alarm object representing minutes and hours of alarm
+ * 
  * @author Lauren Smart 19016480
  */
 class AlarmObject {
