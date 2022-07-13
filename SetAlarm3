@@ -38,33 +38,40 @@ public class SetAlarm3  {
       @SuppressWarnings("unchecked")
       public static void main(String[] args){
       }
-    private final JLabel clockLabel;
-      public SetAlarm3(){  
-     String date;
-     final JTextField alarmName = new JTextField();
-     // JComboBox comboHours = new JComboBox();
-    //  JComboBox comboMinutes = new JComboBox();
-     JTextField hoursTF= new JTextField(2);
-      JTextField minutesTF = new JTextField(2);
-  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // create JFrame and JTable
+    final JLabel clockLabel;
+    final JLabel userInstructLabel = new JLabel();
+      
+    // constructor for SetAlarm
+    public SetAlarm3()
+    {  
+       // String date;
+        final JTextField alarmName = new JTextField();
+  
+      //  JTextField hoursTF= new JTextField(2);
+      //  JTextField minutesTF = new JTextField(2);
+       // JTextFi
         JFrame frame = new JFrame("Set Alarm");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // create JFrame and JTable
+      
         final JTable table = new JTable(); 
-         String[] frameTitles = {"Alarm Name:", "Date:", "Time Hours:", "Time Minutes:"};
-    String[] listAlarms = {alarmName.toString()};
- JTextField[] gtField= new JTextField[frameTitles.length];
- JList list = new JList (new DefaultListModel());
+        String[] frameTitles = {"Alarm Name:", "Date:", "Time Hours:", "Time Minutes:", "Time Seconds:"};
+        String[] listAlarms = {alarmName.toString()};
+        JTextField[] gtField= new JTextField[frameTitles.length];
+        JList list = new JList (new DefaultListModel());
  
- String hoursArray[] = {"01","02","03","04","05","06","07","08","09",
+    String hoursArray[] = {"01","02","03","04","05","06","07","08","09",
       "10","12","13","14","15","16","17","18","19","20","21","22","23"};
-  String minutesArray[]= {"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30",
+    String minutesArray[]= {"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30",
 			"31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"};
- 
+    String secondsArray[]= {"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30",
+			"31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"};
+    
   final JComboBox comboHours = new JComboBox(hoursArray);
   final JComboBox comboMinutes = new JComboBox(minutesArray);
- 
+  final JComboBox comboSeconds = new JComboBox(secondsArray);
         // create a table model and set a Column Identifiers to this model 
-        Object[] columns = {"Alarm Name:","Date:","Time Hours:", "Time Minutes:"};
+        Object[] columns = {"Alarm Name:","Date:","Time Hours:", "Time Minutes:", "Time Seconds:"};
         Arrays.toString(columns);
         final DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(columns);
@@ -77,21 +84,22 @@ public class SetAlarm3  {
         Font font = new Font("",1,22);
         table.setFont(font);
         table.setRowHeight(30);
-        
-  //   https://stackoverflow.com/questions/19727449/java-how-to-update-a-panel-every-second  
-    Timer timer = new Timer(1000, new ActionListener() {
+    
+        // I have used this tutorial to set my clock to update every second    
+        // https://stackoverflow.com/questions/19727449/java-how-to-update-a-panel-every-second  
+        Timer timer = new Timer(1000, new ActionListener() {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
             clockLabel.setText(new Date().toString());
         }
     });
-    timer.start(); 
-    //JFrame f = new JFrame();
-    clockLabel=new JLabel(new Date().toString());
-    frame.add(clockLabel);
-   clockLabel.setBounds(20, 210, 200, 25);      
-       
+        timer.start(); 
+        //JFrame f = new JFrame();
+        clockLabel=new JLabel(new Date().toString());
+        frame.add(clockLabel);
+        clockLabel.setBounds(20, 210, 300, 25);      
+        clockLabel.setFont((new Font("Verdana", Font.PLAIN, 15)));    
     
         // add date chooser
         final JDateChooser alarmDate = new JDateChooser();
@@ -101,12 +109,17 @@ public class SetAlarm3  {
         JLabel alarmDateLabel = new JLabel("Alarm Date:");
         JLabel alarmHoursLabel = new JLabel("Set Hour:");
         JLabel alarmMinutesLabel = new JLabel("Set Minutes:");
-     
+        JLabel alarmSecondsLabel = new JLabel("Set Seconds:");
+        JLabel userInstructLabel = new JLabel("*Please click on row to highlight*");    
+        userInstructLabel.setFont((new Font("Verdana", Font.PLAIN, 15)));
+       
+        // set the layouts for labels
         alarmNameLabel.setBounds(20, 250, 100, 25);
         alarmDateLabel.setBounds(20, 290, 100, 25);
         alarmHoursLabel.setBounds(20, 330, 100, 25);
         alarmMinutesLabel.setBounds(150, 330, 100, 25);
-       
+        alarmSecondsLabel.setBounds(300, 330, 100, 25);
+        userInstructLabel.setBounds(20,370,400,25);
         
         
         alarmNameLabel.add(list);
@@ -123,6 +136,7 @@ public class SetAlarm3  {
      //   alarmDate.setBounds(120, 250, 100, 25);
        comboHours.setBounds(80, 330, 50, 25);
        comboMinutes.setBounds(230, 330, 50, 25);
+       comboSeconds.setBounds(385,330,50,25);
         
         btnAdd.setBounds(500, 220, 100, 25);
         btnUpdate.setBounds(500, 265, 100, 25);
@@ -142,6 +156,7 @@ public class SetAlarm3  {
         frame.add(alarmDate);
         frame.add(comboHours);
         frame.add(comboMinutes);
+        frame.add(comboSeconds);
       
         // add the labels to frame
         frame.add(clockLabel);
@@ -149,7 +164,8 @@ public class SetAlarm3  {
         frame.add(alarmDateLabel);
         frame.add(alarmHoursLabel);
         frame.add(alarmMinutesLabel);
-        
+        frame.add(alarmSecondsLabel);
+        frame.add(userInstructLabel);
         // add JButtons to the jframe
         frame.add(btnAdd);
         frame.add(btnDelete);
@@ -157,7 +173,7 @@ public class SetAlarm3  {
         frame.add(btnSaveToFile);
         
         // create an array of objects to set the row data
-        final Object[] row = new Object[4];
+        final Object[] row = new Object[5];
         
         // button add row
         btnAdd.addActionListener(new ActionListener(){
@@ -165,13 +181,14 @@ public class SetAlarm3  {
             @Override
             public void actionPerformed(ActionEvent e) {
              
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
-                    String date = sdf.format(alarmDate.getDate());
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
+                String date = sdf.format(alarmDate.getDate());
            
                 row[0] = alarmName.getText();
                 row[1] = date;
                 row[2] = comboHours.getSelectedItem().toString();
                 row[3] = comboMinutes.getSelectedItem().toString();
+                row[4] = comboSeconds.getSelectedItem().toString();
                 
                 // add row to the model
                 model.addRow(row);
@@ -189,9 +206,9 @@ public class SetAlarm3  {
                 if(i >= 0){
                     // remove a row from jtable
                     model.removeRow(i);
-                }
-                else{
-                    System.out.println("Delete ");
+                    }
+                        else{
+                            System.out.println("Delete ");
                 }
             }
         });
@@ -205,11 +222,11 @@ public class SetAlarm3  {
             // i = the index of the selected row
             int i = table.getSelectedRow();
             
-           alarmName.setText(model.getValueAt(i, 0).toString());
-         //   alarmDate.setDate((Date) model.getValueAt(i, 1));
-             alarmDate.setDateFormatString(model.getValueAt(i, 1).toString());
+            alarmName.setText(model.getValueAt(i, 0).toString());
+            alarmDate.setDateFormatString(model.getValueAt(i, 1).toString());
             comboHours.setSelectedItem(model.getValueAt(i, 2).toString());
-           comboMinutes.setSelectedItem(model.getValueAt(i, 3).toString());
+            comboMinutes.setSelectedItem(model.getValueAt(i, 3).toString());
+            comboSeconds.setSelectedItem(model.getValueAt(i, 4).toString());
         }
         });
         
@@ -228,10 +245,11 @@ public class SetAlarm3  {
                    model.setValueAt(alarmDate.getCalendar(), i, 1);
                    model.setValueAt(comboHours.getSelectedItem(),i,2);
                    model.setValueAt(comboMinutes.getSelectedItem(),i,3);
+                   model.setValueAt(comboSeconds.getSelectedItem(),i,4);
                 }
                 else{
                     System.out.println("Update ");
-                }
+                    }
             }
         });
         
@@ -240,26 +258,27 @@ public class SetAlarm3  {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         
-   // how to save data from jtable into txt file
-      //https://community.oracle.com/tech/developers/discussion/1248613/how-to-save-data-from-jtable-into-txt-file
-       // button update row
+    //I have used this tutorial on how to save data from jtable into txt file
+    //https://community.oracle.com/tech/developers/discussion/1248613/how-to-save-data-from-jtable-into-txt-file
+    // button save to file
     btnSaveToFile.addActionListener(new ActionListener(){
     @Override
     public void actionPerformed(ActionEvent e) 
     {
         try {
             StringBuilder fileContent = new StringBuilder();
-            TableModel tModel = table.getModel();
-            for (int i = 0; i < tModel.getRowCount(); i++) {
+            TableModel tableModel = table.getModel();
+            for (int i = 0; i < tableModel.getRowCount(); i++) {
                 
                 Object alarmName = model.getValueAt(i, 0);
                 Object alarmDate = model.getValueAt(i, 1);
                 Object comboHours = model.getValueAt(i, 2);
                 Object comboMinutes = model.getValueAt(i, 3);
+                Object comboSeconds = model.getValueAt(i, 4);
                 
-                // ... continue to read each cell in a row
-                fileContent.append(alarmName).append(", ").append(alarmDate).append(", ").append(comboHours).append(":").append(comboMinutes).append("\n");
-                // ... continue to append each cell value
+                // read the data in each cell in a row
+                fileContent.append(alarmName).append(", ").append(alarmDate).append(", ").append(comboHours).append(":").append(comboMinutes).append(":").append(comboSeconds).append("\n");
+                // append each cell value to give a string output
             }
             
             FileWriter fileWriter = new FileWriter("C:\\Users\\PC\\Documents\\NetBeansProjects\\ClockForGraham_2\\clockforgraham.txt");            
@@ -268,13 +287,13 @@ public class SetAlarm3  {
             try {
                 fileWriter.close();
                 
-           } catch (IOException ex) {
-                Logger.getLogger(JTable.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(JTable.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        } 
+                    } catch (IOException ex) {
+                        Logger.getLogger(JTable.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                            } catch (IOException ex) {
+                                Logger.getLogger(JTable.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } 
     });
    
     }
