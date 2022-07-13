@@ -1,77 +1,38 @@
 import java.time.LocalDateTime;
 
-/**
- * This is my alarm object class
+**
+ * This is my alarm object class featuring alarm hour and minute
  * @author Lauren Smart 19016480
  */
-public class AlarmObject {
+class AlarmObject {
     
-    // variable for alarm name
-    String alarmName;
-    String time;
-    String date;
+    // alarm clock variables
+    public int alarmHour;
+    public int alarmMinute;
+    
+    // constructor for class
+    public AlarmObject()
+    {
+        alarmHour= 0;
+        alarmMinute=0;
+    }
     
     
-    // initialise variable for local time now
-    LocalDateTime currentTime = LocalDateTime.now();
-   
-  
-    
-    AlarmObject(){
+    /*
+    * method for setting the alarm hour
+    */
+    public void setHour(int alarmHour)
+    {
         
     }
     
-    /**
-    * method for setting date variable
-    * @param date 
+    /*
+    * method for setting the alarm minute
     */
-    public void setDate(String date)
+    public void setMinute(int alarmMinute)
     {
-       this.date=date;
-       
-    }
-    
-    /**
-    * method for getting date variable
-    * @return 
-    */
-    public String getDate()
-    {
-        return date;
-     
         
     }
     
-    /**
-    * method for setting time variable
-    * @param time
-    */
-    public void setTime(String time)
-    {
-        this.time=time;
-    }
-    
-    /**
-    * method for getting time variable
-    * @return 
-    */
-    public String getTime()
-    {
-        return time;
-      
-        
-    }
-
-
-    public LocalDateTime getUpdateDate() 
-    {
-        return currentTime;
-    }
-
- 
-    public void setUpdateDate(LocalDateTime currentTime) 
-    {
-        this.currentTime = currentTime;
-    }
     
 }
