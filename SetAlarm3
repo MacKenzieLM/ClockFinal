@@ -29,9 +29,9 @@ import javax.swing.table.TableModel;
  * This is my frame class for setting alarms and button functions
  * @author Lauren Smart 19016480
  */
-public class SetAlarm3  {
+public class SetAlarm3 extends JFrame {
 
-  JFrame frame = new JFrame("Set Alarm");
+    JFrame frame = new JFrame("Set Alarm");
     //the main storage for the alarms
     static ArrayList<AlarmObject> alarmObject ;
     static ArrayList<AlarmObject> mainAlarmTable;
@@ -190,27 +190,6 @@ public class SetAlarm3  {
         // create an array of objects to set the row data
         final Object[] row = new Object[4];
         
-////        // button add row
-//       btnAdd.addActionListener(new ActionListener(){
-//
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//             
-//                SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
-//                String date = sdf.format(alarmDate.getDate());
-//           
-//                row[0] = alarmName.getText();
-//                row[1] = date;
-//                row[2] = comboHours.getSelectedItem().toString();
-//                row[3] = comboMinutes.getSelectedItem().toString();
-//                row[4] = comboSeconds.getSelectedItem().toString();
-//                
-//                // add row to the model
-//                model.addRow(row);
-//            }
-//        });
-
-
 
 /**
 	 * This function gets the values from the combo boxes and combines them into one string.
