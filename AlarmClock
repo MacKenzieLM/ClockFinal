@@ -1,0 +1,101 @@
+import java.awt.BorderLayout;
+import java.awt.Font;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+/**
+ * This class is for loading text file into program.  
+ * 
+ * @author Lauren Smart 19016480
+ */
+public class AlarmClock extends JFrame {
+    
+   public static void main(String args[]) {
+   
+   }
+     public AlarmClock()
+     {
+         // create a new frame
+        JFrame frame = new JFrame("Alarm List");  
+               
+        // set frame sizes
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(500,500);
+        frame.setLocation(600,300);
+        frame.setVisible(true);
+
+	// splitting strings with try catch exception to catch 
+        // errors associated with file in and file out
+ 	try{
+             // This section is based on an algorithm by - 
+             // https://1bestcsharp.blogspot.com/2017/10/java-import-and-export-text-file-to-jtable.html
+            // link a new file reader by txt file name
+            FileReader fileReader = new FileReader("C:\\Users\\PC\\Documents\\NetBeansProjects\\ClockForGraham_3\\ClockForGraham_3\\clock.txt");
+                BufferedReader readFile = new BufferedReader(fileReader);
+                    String input = readFile.readLine();
+                        String[] temp;
+	
+	
+        // this splits the string at comma
+	temp = input.split(",");
+	
+                // while loop to retrive file data 
+		while(input!=null)
+		{
+                    int x=0;
+                    // 
+                    temp = input.split(",",5);
+                // enhanced for loop, code suggestion
+                for (String temp1 : temp) {
+                    System.out.println(temp1);
+                }
+		    input = readFile.readLine();
+		}
+
+	}catch(IOException e){
+		System.out.println("ERROR");
+	}
+    // end Of string split
+    // This section is based on an algorithm by java2s - http://www.java2s.com/Tutorial/Java/0240__Swing/CreatingaJTable.htm
+    Object rowData[][] = {
+    	
+    };
+    Object[] columnNames = { "Alarm Name:", "Alarm Date:", "Hour:","Minutes:"};
+    JTable table = new JTable(rowData, columnNames);
+       final DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(columnNames);
+        
+        // set the model to the table with font and buttons
+        table.setModel(model); 
+        Font font = new Font("",1,22);
+        table.setFont(font);
+        table.setRowHeight(30);
+        JButton btnDelete = new JButton("Delete");
+        JButton btnUpdate = new JButton("Update");     
+        JButton btnSaveToFile = new JButton("Save alarm to file");    
+    
+        //add buttons sizes and add to frame
+        btnUpdate.setBounds(20, 220, 100, 25);
+        btnDelete.setBounds(20, 300, 100, 25);
+        btnSaveToFile.setBounds(20, 260, 150, 25);
+        frame.add(btnDelete);
+        frame.add(btnUpdate);
+        frame.add(btnSaveToFile);
+    
+        // scroll enabled
+        JScrollPane scrollPane = new JScrollPane(table);
+        frame.add(scrollPane, BorderLayout.CENTER);
+        frame.setSize(600, 400);
+        frame.setVisible(true);
+    
+    
+    
+    
+   }
+}
