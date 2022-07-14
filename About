@@ -14,21 +14,25 @@ import javax.swing.text.StyleConstants;
  */
 public class About {
       
-   // this page is based on an example of textpane from
-   //  Java Program to format text in JTextPane. 2022. Java Program to format text in JTextPane. [ONLINE] 
+    // this page is based on an example of textpane from
+    // Java Program to format text in JTextPane. 2022. Java Program to format text in JTextPane. [ONLINE] 
     // Available at: https://www.tutorialspoint.com/java-program-to-format-text-in-jtextpane. [Accessed 14 July 2022].
-     JFrame frame = new JFrame("About");
+    JFrame frame = new JFrame("About");
      
-     
+    /*
+    * Constructor for about class
+    */ 
      public About(){
          
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       Container container = frame.getContentPane();
       JTextPane pane = new JTextPane();
+      // variables to set up text area, font and font size
       SimpleAttributeSet attributeSet = new SimpleAttributeSet();
       StyleConstants.setFontFamily(attributeSet,"Verdana");
       StyleConstants.setFontSize(attributeSet, 20);
     
+      // my about section text
       pane.setCharacterAttributes(attributeSet, true);
       pane.setText("This is my alarm clock\n\n"
               + "A user can add an alarm name, choose a date and time,"
