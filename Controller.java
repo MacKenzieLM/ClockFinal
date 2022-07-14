@@ -1,5 +1,6 @@
 package clock;
 
+import java.awt.Component;
 import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -31,12 +32,13 @@ public class Controller {
     Model model;
     View view;
 
-    // create an alarm list as an array list from alarm table model
+     // create an alarm list as an array list from alarm table model
     public static List<AlarmTableModel> ALARM_LIST = new ArrayList<>();
     // create a hashmap as they store arrays in an ordered collection and 
     // store data in key and value pairs 
-    private Map<String, Boolean> alarmCheck = new HashMap<>();
+    private Map<String, Boolean> alarmChecker = new HashMap<>();
 
+    
     /*
     * constructor for controller
     */
@@ -44,29 +46,29 @@ public class Controller {
         model = m;
         view = v;
 
-        // This section is based on an algorithm by - https://1bestcsharp.blogspot.com/2017/10/java-import-and-export-text-file-to-jtable.html
+         // This section is based on an algorithm by - https://1bestcsharp.blogspot.com/2017/10/java-import-and-export-text-file-to-jtable.html
         // load alarms from saved file
         try {
-            try (BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\PC\\Documents\\NetBeansProjects\\ClockForGraham_3\\ClockForGraham_3\\clock.txt"))) {
-                String line = null;
-                // clears the array list 
-                Controller.ALARM_LIST.clear();
-                
-                while ((line = reader.readLine()) != null) {
-                    String[] splitString = line.split(",");
-                    if (splitString == null || splitString.length < 4) {
-                        continue;
-                    }
-                    String name = splitString[0];
-                    String date = splitString[1];
-                    String hour = splitString[2];
-                    String minute = splitString[3];
-                    
-                    //read alarm from file and save it to alarm list
-                    AlarmTableModel alarmTableModel = new AlarmTableModel(name, date, hour, minute);
-                    Controller.ALARM_LIST.add(alarmTableModel);
+            BufferedReader reader = new BufferedReader(new FileReader("clock.txt"));
+            String line = null;
+            // clears the array list 
+            Controller.ALARM_LIST.clear();
+
+            while ((line = reader.readLine()) != null) {
+                String[] splits = line.split(",");
+                if (splits == null || splits.length < 4) {
+                    continue;
                 }
+                String name = splits[0];
+                String date = splits[1];
+                String hour = splits[2];
+                String minute = splits[3];
+
+                //read alarm from file and save it to alarm list
+                AlarmTableModel alarm_model = new AlarmTableModel(name, date, hour, minute);
+                Controller.ALARM_LIST.add(alarm_model);
             }
+            reader.close();
         } catch (IOException e) {
             //e.printStackTrace();
         }
@@ -83,18 +85,15 @@ public class Controller {
         timer.start();
     }
     
-    /*
+  /*
     * This method checks the system clock against the set alarm time and outputs if
-    * matches.  I have referenced assistance from a conversation with a 
+    * matches.  I have referenced assistance from a conversation with a Augusto,S and 
     * I have referenced the enhanced for loop section in order to code this section:
     * https://stackoverflow.com/questions/13967499/convert-string-into-date-format
-    * 
-    * 
-    */ 
+    */
     private void checkAlarm() 
     {
-     
-        // checks current time using date import
+         // checks current time using date import
         Date now = new Date(System.currentTimeMillis());
         // create a new date and time format
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy HH:mm");
@@ -106,18 +105,15 @@ public class Controller {
         for(AlarmTableModel item : ALARM_LIST)
         {
             // set alarm date and hour and minute to string 
-            String alarmTime = item.getDate() + " " + item.getHour() + ":" + item.getMinute();  //.trim();
+            String alarmTime = item.getDate().trim() + " " + item.getHour().trim() + ":" + item.getMinute().trim();
             if(alarmTime.equals(date)){
-                String checkArrayKey = date + " " + item.getName();
+                String checker_key = date + " " + item.getName();
                 //check this alarm is checked before or not
-                if(alarmCheck.get(checkArrayKey) == null || !alarmCheck.get(checkArrayKey)){
-                      JPanel panel = new JPanel();
-                    JOptionPane.showMessageDialog(panel,"Alarm at " + date + " : " + item.getName());
-                
-                   // this stops the recurring output of confirm dialog alarm popup
-                    alarmCheck.put(date + " " + item.getName(), true);
-               
-                    alarmCheck.remove(checkArrayKey);
+                if(alarmChecker.get(checker_key) == null || !alarmChecker.get(checker_key)){
+                    JPanel panel =new JPanel();
+                 JOptionPane.showMessageDialog(panel,"Alarm at " + date + " : " + item.getName());
+                    //if alarm is beep, save it , so it will not beep again
+                    alarmChecker.put(date + " " + item.getName(), true);
                 }
                 
             }
