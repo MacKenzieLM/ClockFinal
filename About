@@ -1,0 +1,46 @@
+
+import java.awt.BorderLayout;
+import java.awt.Container;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+
+/**
+ * The is my about page, describing the clock and alarm system
+ * 
+ * @author Lauren Smart 19016480
+ */
+public class About {
+      
+   // this page is based on an example of textpane from
+   //  Java Program to format text in JTextPane. 2022. Java Program to format text in JTextPane. [ONLINE] 
+    // Available at: https://www.tutorialspoint.com/java-program-to-format-text-in-jtextpane. [Accessed 14 July 2022].
+     JFrame frame = new JFrame("About");
+     
+     
+     public About(){
+         
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      Container container = frame.getContentPane();
+      JTextPane pane = new JTextPane();
+      SimpleAttributeSet attributeSet = new SimpleAttributeSet();
+      StyleConstants.setFontFamily(attributeSet,"Verdana");
+      StyleConstants.setFontSize(attributeSet, 20);
+    
+      pane.setCharacterAttributes(attributeSet, true);
+      pane.setText("This is my alarm clock\n\n"
+              + "A user can add an alarm name, choose a date and time,"
+              + " then set the alarm.  It will produce a popup box when the alarm time is reached.\n\n"
+              + "Several alarms can be stored.\n\n"
+              + "The alarms can edited if you don't mind slight code clunkiness!\n\n"
+              + "The alarms can be deleted too.\n"
+              + "Alarms can be saved to text file.\n\n"
+              + "Alarm queues do not clear however.");
+      JScrollPane scrollPane = new JScrollPane(pane);
+      container.add(scrollPane, BorderLayout.CENTER);
+      frame.setSize(600, 600);
+      frame.setVisible(true);
+   }
+}
