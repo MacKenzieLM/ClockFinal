@@ -1,3 +1,4 @@
+package clock;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,33 +10,33 @@ import javax.swing.JPanel;
 
 
 /**
- * This is my class for pop up alarm trigger. The class
+ * This is my class for alarm trigger which sets off the output panel with alarm name and time. The class
  * is abstract. 
  * 
  * @author Lauren Smart 19016480
  */
 public abstract class AlarmTrigger extends JFrame implements ActionListener{
 
-   // create a new panel with following variables
+     // create a new panel with following variables
     JPanel panel = new JPanel();
     JLabel alarmOutput;
     JButton closeButton = new JButton("Close this window");
     private String alarmName;
     private String alarmTime;
     
-    /*
+     /*
     * Constructor for outputting the alarm name and alarm time 
     */
     public AlarmTrigger(String alarmName, String alarmTime){
        
-       // output the alarm name and time 
-     //  String output = alarmName + " " + alarmTime;
-     //  JOptionPane.showMessageDialog(panel, alarmOutput);
-       JOptionPane.showMessageDialog(panel, alarmName + " " + alarmTime);
+     // output the alarm name and time 
+     // String output = alarmName + " " + alarmTime;
+      JOptionPane.showMessageDialog(panel,  alarmName + " " + alarmTime);
+    
     
    
     
-    // close button closes the window
+      // close button closes the window
     closeButton.addActionListener(new ActionListener() {
 	@Override
 	public void actionPerformed(ActionEvent e) 
