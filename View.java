@@ -10,28 +10,23 @@ import java.util.Observer;
 import java.util.Observable;
 
 /**
- * This class uses a table to output the alarm times and alarm names.
- * I have used a YouTube tutorial as a template and adjusted with my own 
- * labels and jcombo boxes.
- * References -  https://www.youtube.com/watch?v=5MW9DEK_oTw (going from menu button to opening classes)
- *  
- * @author Lauren Smart 19016480
+ * This class uses a table to output the alarm times and alarm names. I have
+ * used a YouTube tutorial as a template and adjusted with my own labels and
+ * spinners. References - https://www.youtube.com/watch?v=5MW9DEK_oTw (going
+ * from menu button to opening classes)
+ * @author Lauren
  */
+public class View implements Observer {
 
-public class View implements Observer{
-    
+    // class variables
     ClockPanel panel;
     JMenuBar menuBar;
     JMenu menu;
     JMenu menu2;
     JMenuItem setAlarm;
-   
-    JMenuItem alarmList;
     JMenuItem about;
     JMenuItem exit;
     // call the classes from menu buttons
-   
- 
     static SetAlarm3 alarm;
     boolean editAlarmString;
     String alarmTimeString;
@@ -60,7 +55,7 @@ public class View implements Observer{
         menu2 = new JMenu("About");
         //add items to first section of menu bar
         setAlarm = new JMenuItem("Set Alarm");
-        alarmList = new JMenuItem("Alarm List");
+     //   alarmList = new JMenuItem("Alarm List");
    
         // add items to second section of menu bar
         about = new JMenuItem("About");
@@ -69,7 +64,7 @@ public class View implements Observer{
         // add items to menu
         menu.add(setAlarm);
      
-        menu.add(alarmList);
+      //  menu.add(alarmList);
         
         // add items to file menu
         menu2.add(about);
@@ -100,28 +95,11 @@ public class View implements Observer{
           
                         // calls iCalendar 
                         About file = new About();
-       
-                    
-             
-                     }   
-              
-            }
+                   }   
+                }
         }); 
          
-       // menu item to take user to list page
-        alarmList.addActionListener(new ActionListener() {
-         @Override
-            public void actionPerformed(ActionEvent e){
-                  if (e.getSource().equals(alarmList)) {
-               
-                        // calls file
-                        File file = new File();
-                     //  file.
-                  //     table.add((Component) ALARM_LIST);
-                             
-                     }   
-            }
-        });
+  
         // exit button exits out of clock
         class exit implements ActionListener{
             
@@ -145,10 +123,7 @@ public class View implements Observer{
         AlarmTableModel date = null;
         AlarmTableModel name = null;
        
-         
-        nextButton = new JButton("Alarm queue next: "+  date + " : " + name);
-        nextButton.setBackground(Color.yellow);
-        pane.add(nextButton, BorderLayout.PAGE_END);
+     
         // End of borderlayout code
         
         frame.pack();
