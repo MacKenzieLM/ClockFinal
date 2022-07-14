@@ -1,3 +1,5 @@
+package clock;
+
 /*
  * This is my sort alarm class. I have referenced some of the for loop from
  * https://www.javatpoint.com/how-to-sort-an-array-in-java
