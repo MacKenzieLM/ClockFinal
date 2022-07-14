@@ -17,7 +17,7 @@ public class AlarmTableModel implements Comparable<AlarmTableModel> {
     private String hour;
     private String minute;
 
-     /*
+    /*
     * 1st Constructor for alarm table model class
     */
     public AlarmTableModel() {
@@ -34,7 +34,7 @@ public class AlarmTableModel implements Comparable<AlarmTableModel> {
         this.minute = minute;
     }
 
-     /*
+ /*
     * setter for alarm name
     */
     public void setName(String name) {
@@ -76,16 +76,17 @@ public class AlarmTableModel implements Comparable<AlarmTableModel> {
         return date;
     }
     
-    /*
+    
+      /*
     * method for parsing the date - when it cannot be converted
     * I have referenced the following in order to help me 
     * https://stackoverflow.com/questions/14217044/simpledateformat-parse-to-date
     * https://stackoverflow.com/questions/16112676/parseexception-must-be-caught-try-catch-java
     */
     public long getDateNum(){
-        // exception handling for date value
+         // exception handling for date value
         try{
-            // create a simple date format
+             // create a simple date format
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
             // create a new date variable and parse this date 
             Date dateValue = sdf.parse(date);
@@ -115,7 +116,8 @@ public class AlarmTableModel implements Comparable<AlarmTableModel> {
         return minute;
     }
 
-    /*
+    
+     /*
     * Method to set compareto so two datenums can be compared.
     * I have chosen to use a comparator here in order to sort the times 
     * by using an if statement.  I have referenced the following 
@@ -130,20 +132,15 @@ public class AlarmTableModel implements Comparable<AlarmTableModel> {
         // set int variable to Long and compare system datenum with alarm table model datenum
         // I use long as it compares two long numbers
         int time = Long.compare(getDateNum(), times.getDateNum());
-        
-        if(time != 0)
-        {
+        if(time != 0){
             return time;
         }
-        
         // compare hour and minutes with alarm table model and return the result
         time = hour.compareTo(times.hour);
-        
-        if (time != 0) 
-        {
+        if (time != 0) {
             return time;
         }
-            return minute.compareTo(times.minute);
+        return minute.compareTo(times.minute);
         
     }
 }
