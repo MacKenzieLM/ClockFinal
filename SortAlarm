@@ -1,0 +1,37 @@
+/*
+ * This is my sort alarm class. I have referenced some of the for loop from
+ * https://www.javatpoint.com/how-to-sort-an-array-in-java
+ * 
+ * I have referenced a conversation with a tutor on the best way to handle the sort method - 
+ * in reference section.
+ * Augusto, S. (2022) Conversation with Lauren Smart, 11 July 2022 
+ * @author Lauren Smart 19016480
+ */
+public class SortAlarm {
+
+    static void bubbleSort(AlarmTableModel[] alarmTime) {
+
+        //length of the array is initialized to the integer n
+        int n = alarmTime.length;
+
+        //A temporary variable called temp is declared as an integer and initialized to 0
+        AlarmTableModel temp = null;
+
+        // first for loop performs multiple iterations
+        for (int i = 0; i < n; i++) {
+            for (int j = 1; j < (n - i); j++) {
+                // if loop compares the adjacent numbers
+                if (alarmTime[j - 1].compareTo(alarmTime[j]) > 0) 
+                { 
+                    // swaps the numbers
+                    // assigns the greater number to temp variable
+                    temp = alarmTime[j - 1]; 
+                    // shifts the lesser number to the previous position
+                    alarmTime[j - 1] = alarmTime[j]; 
+                    // bigger number is then assigned to the right hand side
+                    alarmTime[j] = temp; 
+                }
+            }
+        }
+    }
+}
