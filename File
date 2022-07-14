@@ -1,3 +1,5 @@
+package clock;
+
 import java.awt.Font;
 import java.awt.Frame;
 import javax.swing.DefaultListModel;
@@ -8,105 +10,112 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+
+
 /**
  * This class retrieves the saved alarms
  * References https://www.youtube.com/watch?v=LP7_DlIe670 (Import And Export Text File To JTable In Java NetBeans [ with source code ])
  * 
- * This
- * @author PC
+ * @author Lauren Smart 19016480
  */
 public class File {
 
-    // class variables
-    String alarmName;
-    String comboTime;
-    JButton getDataBtn;
-    File[] file;
-  
+        String alarmName;
+        String comboTime;
+        JButton getDataBtn;
+      
+        File[] file;
+
+    
+/*
+* Constructor for file
+*/        
+        
+public File(String filePath) 
+{
+     // create new frame        
+    Frame frame = new JFrame("Alarm List");
+    frame.setSize(900,500);
+    frame.setLocation(600,300);
+
+     // create a new jtable 
+    final JTable table = new JTable(); 
+    String[] frameTitles = {"Alarm Name:", "Alarm Date and Time:"};
+    String[] listAlarms = {alarmName, comboTime};
+    JTextField[] gtField= new JTextField[frameTitles.length];
+    JList list = new JList (new DefaultListModel());
+        
+    // create a table model and set a Column Identifiers to this model 
+    Object[] columns = {"",""};
+    final DefaultTableModel model = new DefaultTableModel();
+    model.setColumnIdentifiers(columns);
+
+    // set the model to the table
+    table.setModel(model);
+
+    frame.pack();
+    frame.setVisible(true);
+
+     // Change A JTable Background Color, Font Size, Font Color, Row Height
+    Font font = new Font("",1,22);
+    table.setFont(font);
+    table.setRowHeight(30);
+    frame.setSize(900,500);
+    frame.setLocation(600,300);
+    frame.setVisible(true);
+    }
+
     /*
     * Constructor for file
-    */        
-    public File(String filePath) 
+    */
+    public File() {
+    }
+    
+    /*
+    *  method for setting combo time
+    */
+    public void setComboTime(String comboTime)
     {
-        // create new frame  
-        Frame frame = new JFrame("Alarm List");
-        frame.setSize(900,500);
-        frame.setLocation(600,300);
+        this.comboTime=comboTime;
+    }
 
-        // create a new jtable 
-        final JTable table = new JTable(); 
-        String[] frameTitles = {"Alarm Name:", "Alarm Date and Time:"};
-        String[] listAlarms = {alarmName, comboTime};
-        JTextField[] gtField= new JTextField[frameTitles.length];
-        JList list = new JList (new DefaultListModel());
-        
-        // create a table model and set a Column Identifiers to this model 
-        Object[] columns = {"",""};
-        final DefaultTableModel model = new DefaultTableModel();
-        model.setColumnIdentifiers(columns);
-
-        // set the model to the table
-        table.setModel(model);
-
-        frame.pack();
-        frame.setVisible(true);
-
-         // change A JTable Background Color, Font Size, Font Color, Row Height
-        Font font = new Font("",1,22);
-        table.setFont(font);
-        table.setRowHeight(30);
-        frame.setSize(900,500);
-        frame.setLocation(600,300);
-        frame.setVisible(true);
-        }
-
-        /*
-        * Constructor for file
-        */
-        public File() {
-
-        }
-
-        public void setAlarmName(String alarmName) 
-        {
-            this.alarmName=alarmName;
-        }
+    /*
+    *  method for returning alarm name
+    */
+    public String getAlarmName() 
+    {
+        return alarmName;
+    }
     
-        
-        public void setComboTime(String comboTime)
-        {
-            this.comboTime=comboTime;
-        }
+    /*
+    * method for returning combo time
+    */
+    public String getComboTime()
+    {
+        return comboTime;
+    }
 
-
-        public String getAlarmName() 
-        {
-            return alarmName;
-        }
+    /*
+    * boolean method for creating a new file 
+    */
+    public boolean createNewFile() 
+    {
+        return false;
+    }
     
     
-        public String getComboTime()
-        {
-            return comboTime;
-        }
+    /*
+    * Method for string return 
+    */ 
+    @Override
+    public String toString()
+    {
+        String string = "";
 
-    
-        public boolean createNewFile() 
-        {
-            return false;
-        }
-    
-    
-        // return 
-        @Override
-        public String toString()
-        {
-            String string = "";
+        string += ""
+        + this.getAlarmName() +"," + this.getComboTime();
 
-            string += ""
-            + this.getAlarmName() +"," + this.getComboTime();
-  
-            return string;   
-        }
+        return string;   
+    }
     
 }
