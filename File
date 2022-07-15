@@ -27,10 +27,10 @@ public class File {
         File[] file;
 
     
-/*
+/**
 * Constructor for file
-*/        
-        
+* @param filePath
+*/               
 public File(String filePath) 
 {
      // create new frame        
@@ -65,38 +65,42 @@ public File(String filePath)
     frame.setVisible(true);
     }
 
-    /*
+    /**
     * Constructor for file
     */
     public File() {
     }
     
-    /*
+    /**
     *  method for setting combo time
+     * @param comboTime
     */
     public void setComboTime(String comboTime)
     {
         this.comboTime=comboTime;
     }
 
-    /*
+    /**
     *  method for returning alarm name
+     * @return 
     */
     public String getAlarmName() 
     {
         return alarmName;
     }
     
-    /*
+    /**
     * method for returning combo time
+     * @return 
     */
     public String getComboTime()
     {
         return comboTime;
     }
 
-    /*
+    /**
     * boolean method for creating a new file 
+     * @return 
     */
     public boolean createNewFile() 
     {
@@ -104,7 +108,7 @@ public File(String filePath)
     }
     
     
-    /*
+    /**
     * Method for string return 
     */ 
     @Override
