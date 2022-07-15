@@ -14,7 +14,7 @@ import java.util.Observable;
  * used a YouTube tutorial as a template and adjusted with my own labels and
  * spinners. References - https://www.youtube.com/watch?v=5MW9DEK_oTw (going
  * from menu button to opening classes)
- * @author Lauren
+ * @author Lauren Smart 19016480
  */
 public class View implements Observer {
 
@@ -33,7 +33,10 @@ public class View implements Observer {
     JButton nextButton;
     
    
-    
+    /**
+     * Constructor
+     * @param model 
+     */
     public View(Model model) 
     {
         super();
@@ -70,7 +73,10 @@ public class View implements Observer {
         menu2.add(about);
         menu2.add(exit);
         
-        // menu item to take user to set alarm window
+    /**
+     * Set alarm button
+     *
+     */
         setAlarm.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
@@ -86,7 +92,10 @@ public class View implements Observer {
          }
         });
         
-      
+    /**
+     * About page button
+     *  
+     */
           // menu item to take user to about page
         about.addActionListener(new ActionListener() {
             @Override
@@ -100,7 +109,10 @@ public class View implements Observer {
         }); 
          
   
-        // exit button exits out of clock
+     /**
+     * exit button
+     *  
+     */
         class exit implements ActionListener{
             
             @Override
@@ -131,7 +143,7 @@ public class View implements Observer {
      
     }
     
-    /*
+    /**
     * Method to repaint the clock panel 
     */
     @Override
