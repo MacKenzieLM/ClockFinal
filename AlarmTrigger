@@ -24,7 +24,7 @@ public abstract class AlarmTrigger extends JFrame implements ActionListener{
     private String alarmName;
     private String alarmTime;
     
-     /*
+     /**
     * Constructor for outputting the alarm name and alarm time 
     */
     public AlarmTrigger(String alarmName, String alarmTime){
