@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 
-/*
+/**
 * This was pre-coded but had to be amended to allow the check alarm method.  I have referenced
 * a conversation with a tutor regarding how best to construct this class - 
 * I have put it in references section.
@@ -39,8 +39,10 @@ public class Controller {
     private Map<String, Boolean> alarmChecker = new HashMap<>();
 
     
-    /*
+   /**
     * constructor for controller
+     * @param m
+     * @param v
     */
     public Controller(Model m, View v) {
         model = m;
@@ -85,7 +87,7 @@ public class Controller {
         timer.start();
     }
     
-  /*
+  /**
     * This method checks the system clock against the set alarm time and outputs if
     * matches.  I have referenced assistance from a conversation with a Augusto,S and 
     * I have referenced the enhanced for loop section in order to code this section:
