@@ -12,7 +12,9 @@ class AlarmObject {
     public int alarmHour;
     public int alarmMinute;
     
-    // constructor for class
+   /**
+     * constructor for alarm object class
+     */
     public AlarmObject()
     {
         alarmHour= 0;
