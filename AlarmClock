@@ -16,9 +16,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AlarmClock extends JFrame {
     
-   public static void main(String args[]) {
-   
-   }
+  /**
+  * Constructor for Alarm Clock
+  */
      public AlarmClock()
      {
          // create a new frame
