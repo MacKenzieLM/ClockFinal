@@ -88,6 +88,22 @@ public class AlarmTableModel implements Comparable<AlarmTableModel> {
         return date;
     }
     
+     /**
+    * getter for alarm hour
+     * @return hour of alarm
+    */
+    public String getHour() {
+        return hour;
+    } 
+    
+     /**
+    * getter for alarm minute
+     * @return minute of alarm
+    */
+    public String getMinute() {
+        return minute;
+    } 
+    
     
     /**
     * method for parsing the date - when it cannot be converted
