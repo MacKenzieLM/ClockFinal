@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/*
+/**
 * This class hold the variables for the table.  I have name, date, hour and minute.
 * I have referenced code from -
 * https://github.com/PandaWood/Multi-Alarms/blob/master/src/multialarms/AlarmTableModel.java
@@ -19,15 +19,19 @@ public class AlarmTableModel implements Comparable<AlarmTableModel> {
     private String hour;
     private String minute;
 
-    /*
+    /**
     * 1st Constructor for alarm table model class
     */
     public AlarmTableModel() {
 
     }
 
-    /*
+    /**
     * 2nd Constructor for alarm table model class
+     * @param name
+     * @param date
+     * @param hour
+     * @param minute
     */
     public AlarmTableModel(String name, String date, String hour, String minute) {
         this.name = name;
@@ -36,54 +40,61 @@ public class AlarmTableModel implements Comparable<AlarmTableModel> {
         this.minute = minute;
     }
 
- /*
+    /**
     * setter for alarm name
+     * @param name
     */
     public void setName(String name) {
         this.name = name;
     }
 
-     /*
+     /**
     * setter for alarm date
+     * @param date
     */
     public void setDate(String date) {
         this.date = date;
     }
 
-     /*
+     /**
     * setter for alarm hour
+     * @param hour
     */
     public void setHour(String hour) {
         this.hour = hour;
     }
 
-     /*
+     /**
     * setter for alarm minute
+     * @param minute
     */
     public void setMinute(String minute) {
         this.minute = minute;
     }
 
-    /*
+    /**
     * getter for alarm name
+     * @return 
     */
     public String getName() {
         return name;
     }
 
-    /*
+    /**
     * getter for alarm date
+     * @return 
     */
     public String getDate() {
         return date;
     }
     
     
-      /*
+    /**
     * method for parsing the date - when it cannot be converted
     * I have referenced the following in order to help me 
     * https://stackoverflow.com/questions/14217044/simpledateformat-parse-to-date
     * https://stackoverflow.com/questions/16112676/parseexception-must-be-caught-try-catch-java
+     * @return 
     */
     public long getDateNum(){
          // exception handling for date value
@@ -104,29 +115,32 @@ public class AlarmTableModel implements Comparable<AlarmTableModel> {
         }
     }
 
-    /*
+    /**
     * getter for hour 
+     * @return 
     */
     public String getHour() {
         return hour;
     }
 
-    /*
+    /**
     * getter for minute
+     * @return 
     */
     public String getMinute() {
         return minute;
     }
 
     
-     /*
-    * Method to set compareto so two datenums can be compared.
-    * I have chosen to use a comparator here in order to sort the times 
-    * by using an if statement.  I have referenced the following 
+    /**
+    * Method to set compareto so two datenums can be compared.I have chosen to use a comparator here in order to sort the times 
+    * by using an if statement.
+    * I have referenced the following 
     * to assist my code. 
     * https://www.geeksforgeeks.org/comparator-comparinglong-method-in-java-with-examples/
     * https://www.geeksforgeeks.org/java-long-compareto-with-examples/
     * https://www.javatpoint.com/java-long-compare-method
+    * @param times
     */
     @Override
     public int compareTo(AlarmTableModel times) 
