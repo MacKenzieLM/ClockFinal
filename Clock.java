@@ -1,5 +1,9 @@
 package clock;
 
+
+/*
+* This was a pre-coded class designed for assignment.  
+*/
 public class Clock {
     
     public static void main(String[] args) {
