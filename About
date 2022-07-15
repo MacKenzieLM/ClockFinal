@@ -20,7 +20,7 @@ public class About {
     // Available at: https://www.tutorialspoint.com/java-program-to-format-text-in-jtextpane. [Accessed 14 July 2022].
     JFrame frame = new JFrame("About");
      
-    /*
+    /**
     * Constructor for about class
     */ 
      public About(){
