@@ -16,6 +16,6 @@ Exit button
 
 I could reference code from internet research and have this in my code comments and reference section of report.
 
-The page I could not incorporate was iCalendar and I did have some runtime functionality issues here and there.
+iCalendar functionality works to a degree but is not linking to outlook - corrupt files!.
 
 I prepared an excel spreadsheet to record alarm testing.
