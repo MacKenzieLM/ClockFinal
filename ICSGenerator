@@ -1,0 +1,44 @@
+package clock;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+/**
+ * This class is generates an ical file
+ * I have used a github project and altered it to suit my needs.  
+ * https://github.com/BDLogan/iCal/blob/master/iCalendar.java
+ * @author Lauren Smart 19016480
+ */
+public class ICSGenerator {
+    public static void main(String[] args) {
+		String calendarDetails;
+
+		calendarDetails = "BEGIN:VCALENDAR\n" 
+                                + "BEGIN:VEVENT\n" 
+				+ "CALENDAR NAME: lolsmart212@gmail.com\n"
+				+ "DESCRIPTION: \n" 
+                                + "DESCRIPTION:\n"
+                                + "DESCRIPTION:\n" 
+				+ "END:VEVENT\n" 
+				+ "END:VCALENDAR\n";
+                
+				
+
+		try 
+                {
+                    try ( //Creates an iCal.ics file provided with the info above
+                            BufferedWriter outPut = new BufferedWriter(new FileWriter("C:\\Users\\PC\\Documents\\NetBeansProjects\\ClockForGraham_5\\iCal.ics"))) {
+                        outPut.write(calendarDetails);
+                    }
+			System.out.println("iCal has been made.");
+		}
+
+		// catches if no file had been made
+		catch (IOException e) {
+			System.out.println("No file found");
+
+		}
+	}
+
+}
