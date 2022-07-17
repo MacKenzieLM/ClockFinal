@@ -27,7 +27,7 @@ public class iCalendar {
             // OPTIONAL classification of the file
             do {
                 
-              
+                // menu options
                 System.out.println("Main Menu");
                 System.out.println("[1] Import .ics File");
                 System.out.println("[2] Clear Screen");
@@ -37,7 +37,8 @@ public class iCalendar {
                 
                 String mainMenu = scanner.next();
                 switch (mainMenu) {
-                   
+                    
+		    // use switch case 
                     case "1":
                         list.add(importFiles());
                         outputEvent(event); // outputs the information into an .ics file
