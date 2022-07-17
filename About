@@ -42,7 +42,7 @@ public class About {
               + "The alarms can edited if you don't mind slight code clunkiness!\n\n"
               + "The alarms can be deleted too.\n"
               + "Alarms can be saved to text file.\n\n"
-              + "Alarm queues do not clear however.");
+              + "Old alarms must be manually removed, however.");
       JScrollPane scrollPane = new JScrollPane(pane);
       container.add(scrollPane, BorderLayout.CENTER);
       frame.setSize(600, 600);
