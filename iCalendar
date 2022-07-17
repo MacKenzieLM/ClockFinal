@@ -1,0 +1,182 @@
+package clock;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ * This is iCalendar class
+ * I have used a github project and altered it to suit my needs.  
+ * https://github.com/BDLogan/iCal/blob/master/iCalendar.java
+ * @author Lauren Smart 19016480
+ */
+public class iCalendar {
+    public static void main(String[] args) throws IOException {
+		AlarmTableModel event = new AlarmTableModel(); // Uses the eventMaker class to help get the information for the event and make the .ics file.
+        try (Scanner input = new Scanner(System.in)) {
+            ArrayList<String> list = new ArrayList<>();
+            boolean loop = true;
+            boolean run = true;
+           
+            
+            Scanner scanner = new Scanner(System.in);
+            // OPTIONAL classification of the file
+            do {
+                
+              
+                System.out.println("Main Menu");
+                System.out.println("[1] Import .ics File");
+                System.out.println("[2] Clear Screen");
+                System.out.println("[3] Exit");
+          
+                System.out.print("\nEnter your selection: ");
+                
+                String mainMenu = scanner.next();
+                switch (mainMenu) {
+                   
+                    case "1":
+                        list.add(importFiles());
+                        outputEvent(event); // outputs the information into an .ics file
+                        System.out.println("Invalid input, needs y or n");
+                        break;
+                    case "2":
+                        iCalendar.clearScreen();
+                        break;
+                    case "3":
+                        System.out.println("Exiting Event Calendar Creator...");
+                        run = false;
+                        System.out.println(list);
+                        input.close();
+                        System.exit(1);
+                        break;
+                    default:
+                        System.out.println("-Invalid selection-\n");
+                        break;
+                }
+            } while (run);
+            System.out.println(list);
+        }
+		  }		
+
+	
+    /*
+    * method for scheduling event
+    */
+	public static String scheduleEvent(AlarmTableModel inputEvent)
+        {
+            // class variables
+            String name;
+            String date;
+            String hour;
+            String minute;
+           
+
+            // set up for menu
+		Scanner input = new Scanner(System.in);
+
+		System.out.println("Enter Alarm Name:");
+		name = input.nextLine() + ".ics";
+		inputEvent.getName();
+		
+		
+		// input for the date of the event
+		System.out.println("Alarm date (Format DD/MM/YYY):");
+		date = input.nextLine();
+                inputEvent.getDate();
+		
+		// hour of alarm
+		System.out.println("Alarm hour:");
+		hour = input.nextLine();
+		inputEvent.getHour();
+
+                //minute of alarm
+		System.out.println("Alarm minute:");
+		minute = input.nextLine();
+		inputEvent.getMinute();
+		
+
+		// Formats the date to look like the one in the .ics file
+		inputEvent.getName();
+		inputEvent.getDate();
+		inputEvent.getHour();
+                inputEvent.getMinute();
+
+		
+		Scanner scanner = new Scanner(System.in);
+		// OPTIONAL classification of the file
+		
+		return name + date + hour + minute;
+
+	}
+	
+        /*
+        * this outputs
+        */
+	public static void outputEvent(EventMaker eventMaker) throws IOException {
+		String calendarDetails;
+
+		calendarDetails = "BEGIN:VCALENDAR\n" 
+				+ "BEGIN:VEVENT\n" 
+                                + "VERSION: 2.0\n"
+                                + "CALENDAR NAME:lolsmart212@gmail.com\n"
+				+ "ALARM NAME:" + eventMaker.returnAlarmName() + "\n" 
+				+ "ALARM DATE:" + eventMaker.returnAlarmDate() + "\n" 
+				+ "ALARM TIME:" + eventMaker.returAlarmTime() + "\n" 
+				+ "END:VEVENT\n"
+				+ "END:VCALENDAR\n";
+
+        try ( // Creates an iCal.ics file provided with the info above
+                BufferedWriter output = new BufferedWriter(new FileWriter("C:\\Users\\PC\\Documents\\NetBeansProjects\\ClockForGraham_5\\clock.txt") )){
+            output.write(calendarDetails);
+        }
+
+	}
+	
+		public static void clearScreen() {
+		    for (int i = 30; i > 0; i--){
+		      System.out.println();
+		    }
+		}
+	
+	public static String importFiles() throws IOException{
+		
+		System.out.println("Write the name of the file:");
+		Scanner scanner2 = new Scanner(System.in);
+		String fName = scanner2.next();
+
+
+		BufferedReader br = new BufferedReader(new FileReader(fName));
+		
+		System.out.println(fName);
+
+		try {
+		    StringBuilder sb = new StringBuilder();
+		    String line = br.readLine();
+
+		    while (line != null) {
+		        sb.append(line);
+		        sb.append(System.lineSeparator());
+		        line = br.readLine();
+
+		    }
+		    String everything = sb.toString();
+			System.out.println(everything);
+
+		} finally {
+			
+		    br.close();
+		}
+		return fName;
+		
+	}
+
+    private static void outputEvent(AlarmTableModel event) {
+       
+    }
+}
+
+  
