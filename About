@@ -25,7 +25,7 @@ public class About {
     */ 
      public About(){
          
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
       Container container = frame.getContentPane();
       JTextPane pane = new JTextPane();
       // variables to set up text area, font and font size
