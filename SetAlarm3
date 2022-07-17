@@ -82,7 +82,7 @@ public class SetAlarm3 extends JFrame
 
             // create  JTable
             final JTable table = new JTable();
-            frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
              // create table headers
             String[] frameTitles = {"Alarm Name:", "Date:", "Time Hours:", "Time Minutes"};
             String[] listAlarms = {alarmName.toString()};
