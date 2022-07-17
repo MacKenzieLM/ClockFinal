@@ -1,0 +1,89 @@
+package clock;
+
+/**
+ * This is event maker class
+ * I have used a github project and altered it to suit my needs.  
+ * https://github.com/BDLogan/iCal/blob/master/iCalendar.java
+ * @author Lauren Smart 19016480
+ */
+final class EventMaker {
+  
+        // class variables
+	private String alarmName;
+        private String alarmDate;
+	private String alarmTime;
+	
+   
+        /**
+         * Constructor for EventMaker class
+         */
+	public EventMaker() {
+		
+		alarmName(toString());
+		alarmDate(toString());
+		alarmTime(toString());
+             
+	}
+
+    /**
+     * alarm name for event maker
+     * @param toString 
+     */    
+    private void alarmName(String alarmName) 
+    {
+       this.alarmName = alarmName;
+    }
+
+      /**
+     * alarm date for event maker
+     * @param toString 
+     */ 
+    private void alarmDate(String alarmDate) 
+    {
+       this.alarmDate = alarmDate;
+    }
+
+      /**
+     * alarm time for event maker
+     * @param toString 
+     */ 
+    private void alarmTime(String alarmTime) 
+    {
+        this.alarmTime = alarmTime;
+    }
+    
+   
+
+    /**
+     * return string alarm name for event maker
+     * @param toString 
+     */ 
+    public String returnAlarmName() 
+    {
+		return alarmName;
+	}
+    
+   
+    
+       /**
+     * return string alarm date for event maker
+     * @param toString 
+     */ 
+    public String returnAlarmDate() 
+    {
+		return alarmDate;
+	}
+    
+      /**
+     * return string alarmTime for event maker
+     * @param toString 
+     */ 
+    public String returAlarmTime() 
+    {
+		return alarmTime;
+	}
+    
+   
+
+}
+
