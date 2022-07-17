@@ -13,7 +13,8 @@ import java.io.IOException;
 public class ICSGenerator {
     public static void main(String[] args) {
 		String calendarDetails;
-
+		  
+		// creates string output
 		calendarDetails = "BEGIN:VCALENDAR\n" 
                                 + "BEGIN:VEVENT\n" 
 				+ "CALENDAR NAME: lolsmart212@gmail.com\n"
